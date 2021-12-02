@@ -1,16 +1,46 @@
-import { Block } from "./blocks.js";
-const matrixWorld = new Array(20).fill([...new Array(20).fill(0)]);
+// import { Block } from "./blocks.js";
+// const matrixWorld = new Array(20).fill([...new Array(20).fill(0)]);
 
-function gameStart() {
-  generateWorld(); // Function that fills matrix array with block Object
-  drawWorld(); // Draws the world accroding to the generated matrix
-}
+// function gameStart() {
+//   generateWorld(); // Function that fills matrix array with block Object
+//   drawWorld(); // Draws the world accroding to the generated matrix
+// }
 
-function generateWorld() {
-  for (let i = matrixWorld.length - 1; i > matrixWorld.length - 6; i--) {
-    matrixWorld[i] = matrixWorld[i].map((b) => 1);
-  }
-}
+// function generateWorld() {
+//   for (let i = matrixWorld.length - 1; i > matrixWorld.length - 6; i--) {
+//     matrixWorld[i] = matrixWorld[i].map((b) => 1);
+//   }
+// }
 
-generateWorld();
-console.log(matrixWorld);
+// generateWorld();
+// console.log(matrixWorld);
+
+const blocks = {
+  sky: 0,
+  dirt: 1,
+  stone: 2,
+  wood: 3,
+  leaves: 4,
+};
+
+const matrix = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
