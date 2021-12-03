@@ -4,15 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./CSS/style.css" />
     <title>Minecraft</title>
   </head>
-
   <body>
-    <div class="gameZone">
-      <div class="playArea"></div>
+    <div id="gameZone">
+      <div data-playzone class="gameZone-playscreen"></div>
     </div>
-    <script src="./script/game.js"></script>
-    <script src="./script/play.js"></script>
+    <div class="gameZone-Inventory">
+      <div class="pickaxe tools"></div>
+      <div class="axe tools"></div>
+      <div class="shovel tools"></div>
+      <div id="stone"></div>
+      <div id="grass"></div>
+      <div id="dirt"></div>
+      <div id="wood"></div>
+      <div id="leaves"></div>
+    </div>
+    <script src="/scripts/gameZone.js"></script>
+    <script src="./scripts/tools.js"></script>
   </body>
 </html>

@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+}
+/* Game Zone */
+#gameZone {
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  width: 100%;
+}
+
+.gameZone-playscreen {
+  height: 100%;
+  width: 100vmin;
+  display: grid;
+  background-color: skyblue;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+.cloud {
+  background: white;
+}
+
+.sunupleft {
+  background: rgb(255, 220, 23);
+  border-top-left-radius: 10rem;
+}
+.sunupright {
+  background: rgb(255, 220, 23);
+  border-top-right-radius: 10rem;
+}
+.sundownleft {
+  background: rgb(255, 220, 23);
+  border-bottom-left-radius: 10rem;
+}
+.sundownright {
+  background: rgb(255, 220, 23);
+  border-bottom-right-radius: 10rem;
+}
+.dirt {
+  background: url(/Textures/Dirt.png) center center / cover no-repeat;
+}
+
+.grass {
+  background: url(/Textures/GrassBlock.png) center center / cover no-repeat;
+}
+
+.wood {
+  background: url(/Textures/Wood.png) center center / cover no-repeat;
+}
+
+.stone {
+  background: url(/Textures/Stone.png) center center / cover no-repeat;
+}
+
+.leaves {
+  background: url(/Textures/Leaves.png) center center / cover no-repeat;
+}
+
+/* Inventory */
+.gameZone-Inventory {
+  display: flex;
+  height: 10vh;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pickaxe {
+  background: url(/Textures/pickaxe.png) center center / cover no-repeat;
+  border: black 5px solid;
+  height: 10vh;
+  width: 10vh;
+}
+.axe {
+  background: url(/Textures/axe.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+.shovel {
+  background: url(/Textures/shovel.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+#stone {
+  background: url(/Textures/Stone.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+#wood {
+  background: url(/Textures/Wood.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+#dirt {
+  background: url(/Textures/Dirt.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+#grass {
+  background: url(/Textures/GrassBlock.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+#leaves {
+  background: url(/Textures/Leaves.png) center center / cover no-repeat;
+  height: 10vh;
+  width: 10vh;
+  border: black 5px solid;
+}
+.selected {
+  border: 5px red solid;
+}
