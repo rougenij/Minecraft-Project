@@ -54,6 +54,19 @@ function reset() {
     }
   }
 }
+
+restartBtn.addEventListener("click", () => {
+  landingPage.classList.remove("none");
+  allGameZoneEl.classList.toggle("none");
+  InventoryEl.classList.toggle("none");
+  stoneEl.textContent = "";
+  woodEl.textContent = "";
+  leavesEl.textContent = "";
+  dirtEl.textContent = "";
+  grassEl.textContent = "";
+  playZone.innerHTML = "";
+  reset();
+});
 // The blocks to build the matrix
 const blocks = {
   0: "sky",
