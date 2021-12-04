@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Minecraft";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/Fonts/Minecraft.woff") format("woff"),
+    url("/Fonts/Minecraft.ttf") format("tff");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -93,31 +101,53 @@ body {
   background: url(/Textures/Stone.png) center center / cover no-repeat;
   height: 10vh;
   width: 10vh;
-  border: black 5px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #wood {
   background: url(/Textures/Wood.png) center center / cover no-repeat;
   height: 10vh;
   width: 10vh;
-  border: black 5px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #dirt {
   background: url(/Textures/Dirt.png) center center / cover no-repeat;
   height: 10vh;
   width: 10vh;
-  border: black 5px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #grass {
   background: url(/Textures/GrassBlock.png) center center / cover no-repeat;
   height: 10vh;
   width: 10vh;
-  border: black 5px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #leaves {
   background: url(/Textures/Leaves.png) center center / cover no-repeat;
   height: 10vh;
   width: 10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#counter {
+  color: white;
+  font-size: 3rem;
+  font-family: "Minecraft";
+}
+.counter {
   border: black 5px solid;
+  color: white;
+  font-size: 3rem;
+  font-family: "Minecraft";
 }
 .selected {
   border: 5px red solid;

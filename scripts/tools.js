@@ -1,4 +1,4 @@
-const tools = [...document.querySelectorAll(".tools")];
+const tools = [...document.querySelector(".gameZone-Inventory").children];
 
 const toolsMaterial = {
   pickaxe: ["stone"],
@@ -15,8 +15,7 @@ function t(e) {
   let target = e.target;
   let child = target.parentElement.firstElementChild;
   while (child) {
-    console.log(child.classList);
-    console.log(e.target.classList);
+    console.log(child);
     if (child.classList.contains("selected") && child !== target) {
       child.classList.toggle("selected");
     }
