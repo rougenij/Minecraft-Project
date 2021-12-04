@@ -1,4 +1,7 @@
 const playZone = document.querySelector(".gameZone-playscreen");
+const allGameZoneEl = document.querySelector("#gameZone");
+const landingPage = document.querySelector(".landingpage");
+const InventoryEl = document.querySelector(".gameZone-Inventory");
 const toolEl = document.querySelectorAll(".itemSlot");
 const tools = [...document.querySelector(".gameZone-Inventory").children];
 //* Tools Elements
@@ -11,6 +14,21 @@ const woodEl = document.querySelector(".wood-counter");
 const grassEl = document.querySelector(".grass-counter");
 const dirtEl = document.querySelector(".dirt-counter");
 const leavesEl = document.querySelector(".leaves-counter");
+// Landing Page Buttons \\
+const startBtn = document.querySelector("[data-stargame]");
+const tutorialBtn = document.querySelector("[data-tutorial]");
+const tutorialMsgEl = document.querySelector("[data-tutorialMsg");
+
+startBtn.addEventListener("click", () => {
+  landingPage.classList.add("none");
+  allGameZoneEl.classList.toggle("none");
+  InventoryEl.classList.toggle("none");
+});
+tutorialBtn.addEventListener("click", () => {
+  tutorialMsgEl.textContent =
+    "Choose an assembly tool and start working. Each tool can be used for specific elements only. Once you removed an element, you can replace it anywhere you would like on the ground";
+});
+
 // The blocks to build the matrix
 const blocks = {
   0: "sky",
@@ -38,11 +56,13 @@ const mineAble = {
   ],
 };
 // Global Variables
-let grassCounter = 0;
-let stoneCounter = 0;
-let dirtCounter = 0;
-let leavesCounter = 0;
-let woodCounter = 0;
+let counters = {
+  grass: 0,
+  stone: 0,
+  dirt: 0,
+  leaves: 0,
+  wood: 0,
+};
 
 // Tools Materials
 const toolsMaterial = {
@@ -79,7 +99,7 @@ function draw() {
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       const block = document.createElement("div");
-      block.addEventListener("click", isMineAble, false);
+      block.addEventListener("click", isActive, false);
       block.classList.add(blocks[matrix[i][j]]);
       block.setAttribute("x", i);
       block.setAttribute("y", j);
@@ -89,6 +109,20 @@ function draw() {
 }
 draw();
 
+function isActive(e) {
+  if (isSlotSelected()) {
+    switch (selectedTool) {
+      case "pickaxe":
+      case "axe":
+      case "shovel":
+        isMineAble(e);
+        break;
+      default:
+        isPlaceable(e.target);
+        break;
+    }
+  }
+}
 function isMineAble(e) {
   console.log(toolsMaterial[selectedTool]);
   if (toolsMaterial[selectedTool].includes(e.target.classList.value)) {
@@ -115,28 +149,80 @@ function isAccessible(tile) {
     tile.classList.add(blocks[0]);
   }
 }
+function isSlotSelected() {
+  if (selectedTool == toolsMaterial.none) {
+    return false;
+  }
+  return true;
+}
+
+function isPlaceable(tile) {
+  console.log(selectedTool);
+  if (counters[selectedTool] > 0) {
+    console.log("im in");
+    const x = parseInt(tile.getAttribute("x"));
+    const y = parseInt(tile.getAttribute("y"));
+    let tileType = tile.classList.value;
+    if (
+      (matrix[x + 1][y] === 0 ||
+        matrix[x - 1][y] === 0 ||
+        matrix[x][y - 1] === 0 ||
+        matrix[x][y + 1] === 0) &&
+      tileType === "sky"
+    ) {
+      decrese(selectedTool);
+      matrix[x][y] = blocks[selectedTool];
+      tile.classList.remove(tileType);
+      tile.classList.add(selectedTool);
+    }
+  }
+}
 
 function add(tile) {
   switch (tile) {
     case "grass":
-      grassEl.textContent = `${grassCounter + 1}`;
-      grassCounter++;
+      grassEl.textContent = `${counters.grass + 1}`;
+      counters.grass++;
       break;
     case "dirt":
-      dirtEl.textContent = `${dirtCounter + 1}`;
-      dirtCounter++;
+      dirtEl.textContent = `${counters.dirt + 1}`;
+      counters.dirt++;
       break;
     case "stone":
-      stoneEl.textContent = `${stoneCounter + 1}`;
-      stoneCounter++;
+      stoneEl.textContent = `${counters.stone + 1}`;
+      counters.stone++;
       break;
     case "wood":
-      woodEl.textContent = `${woodCounter + 1}`;
-      woodCounter++;
+      woodEl.textContent = `${counters.wood + 1}`;
+      counters.wood++;
       break;
     case "leaves":
-      leavesEl.textContent = `${leavesCounter + 1}`;
-      leavesCounter++;
+      leavesEl.textContent = `${counters.leaves + 1}`;
+      counters.leaves++;
+      break;
+  }
+}
+function decrese(tile) {
+  switch (tile) {
+    case "grass":
+      grassEl.textContent = `${counters.grass - 1}`;
+      counters.grass--;
+      break;
+    case "dirt":
+      dirtEl.textContent = `${counters.dirt - 1}`;
+      counters.dirt--;
+      break;
+    case "stone":
+      stoneEl.textContent = `${counters.stone - 1}`;
+      counters.stone--;
+      break;
+    case "wood":
+      woodEl.textContent = `${counters.wood - 1}`;
+      counters.wood--;
+      break;
+    case "leaves":
+      leavesEl.textContent = `${counters.leaves - 1}`;
+      counters.leaves--;
       break;
   }
 }
@@ -157,7 +243,7 @@ function select(i) {
 function unselect(i) {
   tools.forEach((el, j) => {
     if (i != j) {
-      toolEl[j].classList.remove("selected");
+      tools[j].classList.remove("selected");
     }
   });
   if (!toolEl[i].classList.contains("selected")) {

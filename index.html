@@ -2,24 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="https://www.minecraft.net/favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <title>Minecraft</title>
   </head>
   <body>
-    <div id="gameZone">
+    <div class="landingpage">
+      <button data-stargame class="landingpage-startgame button">
+        Start Game
+      </button>
+      <button data-tutorial class="landingpage-howtoplay button">
+        How to play
+      </button>
+      <p data-tutorialMsg class="tutorial-message"></p>
+    </div>
+    <div id="gameZone" class="none">
       <div data-playzone class="gameZone-playscreen"></div>
     </div>
-    <div class="gameZone-Inventory">
+    <div class="gameZone-Inventory none">
       <div class="pickaxe tools itemSlot"></div>
       <div class="axe tools itemSlot"></div>
       <div class="shovel tools itemSlot"></div>
-      <div id="stone" class="counter stone-counter itemSlot"></div>
-      <div id="grass" class="counter grass-counter itemSlot"></div>
-      <div id="dirt" class="counter dirt-counter itemSlot"></div>
-      <div id="wood" class="counter wood-counter itemSlot"></div>
-      <div id="leaves" class="counter leaves-counter itemSlot"></div>
+      <div id="stone" class="stone counter stone-counter itemSlot"></div>
+      <div id="grass" class="grass counter grass-counter itemSlot"></div>
+      <div id="dirt" class="dirt counter dirt-counter itemSlot"></div>
+      <div id="wood" class="wood counter wood-counter itemSlot"></div>
+      <div id="leaves" class="leaves counter leaves-counter itemSlot"></div>
+      <div class="buttons">
+        <button>Reset Game</button>
+        <button>Start Game</button>
+      </div>
     </div>
     <script src="/scripts/gameZone.js"></script>
   </body>
