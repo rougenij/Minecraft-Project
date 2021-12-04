@@ -18,6 +18,10 @@ const leavesEl = document.querySelector(".leaves-counter");
 const startBtn = document.querySelector("[data-stargame]");
 const tutorialBtn = document.querySelector("[data-tutorial]");
 const tutorialMsgEl = document.querySelector("[data-tutorialMsg");
+const gameButtonsEl = document.querySelectorAll(".buttons");
+// Game Buttons \\
+const resetBtn = document.querySelector("[data-reset");
+const restartBtn = document.querySelector("[data-restart");
 
 startBtn.addEventListener("click", () => {
   landingPage.classList.add("none");
@@ -29,6 +33,27 @@ tutorialBtn.addEventListener("click", () => {
     "Choose an assembly tool and start working. Each tool can be used for specific elements only. Once you removed an element, you can replace it anywhere you would like on the ground";
 });
 
+resetBtn.addEventListener("click", () => {
+  stoneEl.textContent = "";
+  woodEl.textContent = "";
+  leavesEl.textContent = "";
+  dirtEl.textContent = "";
+  grassEl.textContent = "";
+  playZone.innerHTML = "";
+  reset();
+});
+function reset() {
+  for (let i = 0; i < notTouchedMatrix.length; i++) {
+    for (let j = 0; j < notTouchedMatrix[i].length; j++) {
+      const block = document.createElement("div");
+      block.addEventListener("click", isActive, false);
+      block.classList.add(blocks[notTouchedMatrix[i][j]]);
+      block.setAttribute("x", i);
+      block.setAttribute("y", j);
+      playZone.appendChild(block);
+    }
+  }
+}
 // The blocks to build the matrix
 const blocks = {
   0: "sky",
@@ -94,6 +119,28 @@ let matrix = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
+let notTouchedMatrix = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 0],
+  [0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 9, 10, 0],
+  [0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0],
+  [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0],
+  [3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0],
+  [3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0],
+  [3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0],
+  [3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0],
+  [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+];
 
 function draw() {
   for (let i = 0; i < matrix.length; i++) {
@@ -124,7 +171,6 @@ function isActive(e) {
   }
 }
 function isMineAble(e) {
-  console.log(toolsMaterial[selectedTool]);
   if (toolsMaterial[selectedTool].includes(e.target.classList.value)) {
     if (
       mineAble.mineableBlock.includes(e.target.classList.value) &&
@@ -157,9 +203,7 @@ function isSlotSelected() {
 }
 
 function isPlaceable(tile) {
-  console.log(selectedTool);
   if (counters[selectedTool] > 0) {
-    console.log("im in");
     const x = parseInt(tile.getAttribute("x"));
     const y = parseInt(tile.getAttribute("y"));
     let tileType = tile.classList.value;
@@ -234,9 +278,8 @@ tools.forEach((element, i) => {
 });
 
 function select(i) {
-  toolEl[i].classList.toggle("selected");
-  selectedTool = toolEl[i].classList[0];
-  console.log(toolEl[i]);
+  tools[i].classList.toggle("selected");
+  selectedTool = tools[i].classList[0];
   unselect(i);
 }
 

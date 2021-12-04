@@ -190,11 +190,33 @@ body {
   border: 5px red solid;
 }
 .buttons {
+  border: 5px black dotted;
   display: flex;
   flex-direction: column;
+  font-family: "Minecraft";
+  font-size: 2rem;
+  margin-left: 10px;
+  background: transparent;
+  color: white;
+}
+.reset {
+  background: transparent;
+  padding: 0.5rem;
+}
+.restart {
+  background: transparent;
+  padding: 0.5rem;
 }
 @media (max-height: 812px) {
+  body {
+    background: cyan;
+    display: flex;
+    flex-direction: column;
+  }
   .counter {
     font-size: 1.5rem;
+  }
+  .tools {
+    margin-right: 3.3rem;
   }
 }
