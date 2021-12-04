@@ -302,7 +302,7 @@ function unselect(i) {
       tools[j].classList.remove("selected");
     }
   });
-  if (!toolEl[i].classList.contains("selected")) {
+  if (!tools[i].classList.contains("selected")) {
     selectedTool = toolsMaterial.none;
   }
 }
