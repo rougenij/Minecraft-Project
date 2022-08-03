@@ -21,9 +21,9 @@ The idea behind this project was to re create a simple version of the game i gre
 ---------------------------------
 ![Minecraft1](Textures/Minecraft-StartingScreen.png)
 -------------------------------------
-![Minecraft2](Textures/Minecraft-RandomWorld.png)
+![Minecraft2](Textures/Minecraft-GameScreen.png)
 ------------------------------------
-![Minecraft3](extures/Minecraft-GameScreen.png)
+![Minecraft3](Textures/Minecraft-RandomWorld.png)
 
 
 ## Future Plans for this project:
